@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content=" Anastasia Bobere" />
+    <meta name="description" content="TradeHub" />
+    <meta name="keywords" content="Recycle thrifting TradeHub" />
+    <script
+      src="https://kit.fontawesome.com/1995a9df69.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <title>TradeHub</title>
+  </head>
+  <body>
+    <header id="header">
+      <nav class="container" id="nav-con">
+        <a href="index.html" id="logo">TradeHub</a>
+        <svg
+          class="close"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512">
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+        </svg>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <button id="login" class="btn">
+          <a href="login.html">Login</a>
+        </button>
+      </nav>
+      <svg
+        class="menu"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512">
+        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+      </svg>
+    </header>
+    <section id="home">
+      <div class="container">
+        <div id="banner">
+          <h1>
+            Find your perfect match on <br />
+            <span>TradeHub</span>
+          </h1>
+        </div>
+        <div id="home-products">
+          <h3>Take a look at the latest products</h3>
+          <button class="btn">
+            <a href="products.html"
+              >More <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </button>
+          <div class="cards">
+            <div class="product-card">
+              <img src="images/product-jeans.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+            <div class="product-card">
+              <img src="images/product-phone.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+            <div class="product-card">
+              <img src="images/product-book.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="home-about">
+      <div class="about-div">
+        <h2>Learn why <span>you</span> should try trading your items</h2>
+        <p>
+          In the past 20 years, clothing production has approximately doubled
+          due to higher demand from a growing middle class around the world.
+          Meanwhile, garment usage lifetime has decreased on the consumer side.
+          This embodies the “fast fashion” phenomenon: more options, quicker
+          trend turnaround, lower prices, and unpriced damage to the
+          environment. -
+          <a
+            href="https://earth.org/data_visualization/fast-fashion-the-environment-and-climate-change-a-data-viz-story/"
+            target="_blank"
+            >Earth.org</a
+          >
+        </p>
+
+        <h4>Look at this!</h4>
+        <img src="images/vector-1.png" class="arrow" alt="vector" />
+        <img
+          src="images/statistics.jpg"
+          id="statistics"
+          alt="Photo of statistics" />
+        <button class="btn"><a href="about.html"> Learn More</a></button>
+      </div>
+    </section>
+    <footer>
+      <a id="logo" href="index.html">TradeHub</a>
+      <p class="info-footer">
+        If you have any problems contact us
+        <a href="contact.html"><span>here</span></a>
+      </p>
+      <p class="footer-list">
+        tradehub@gmail.com <br />
+        +37122083534 <br />
+        Ventspils, Latvia
+      </p>
+    </footer>
+    <script src="script.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBPEIJgwfcH37xG4EiDKccD9h9dx4HawEE",
+
+        authDomain: "tradehub-ab4a5.firebaseapp.com",
+
+        projectId: "tradehub-ab4a5",
+
+        storageBucket: "tradehub-ab4a5.appspot.com",
+
+        messagingSenderId: "553555950171",
+
+        appId: "1:553555950171:web:6e026157a898fa68509d7e",
+
+        measurementId: "G-PW1EZEMT7E",
+      };
+
+      // Initialize Firebase
+
+      const app = initializeApp(firebaseConfig);
+
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
