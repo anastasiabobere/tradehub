@@ -1,89 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content=" Anastasia Bobere" />
+    <meta name="description" content="TradeHub" />
+    <meta name="keywords" content="Recycle thrifting TradeHub" />
+    <script
+      src="https://kit.fontawesome.com/1995a9df69.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/10.10.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/10.10.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/10.10.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
+    <title>TradeHub</title>
   </head>
   <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <header id="header">
+      <nav class="container" id="nav-con">
+        <a href="index.html" id="logo">TradeHub</a>
+        <svg
+          class="close"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512">
+          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+          <path
+            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+        </svg>
+        <ul>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <button id="login" class="btn">
+          <a href="login.html">Login</a>
+        </button>
+      </nav>
+      <svg
+        class="menu"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512">
+        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+      </svg>
+    </header>
+    <section id="home">
+      <div class="container">
+        <div id="banner">
+          <h1>
+            Find your perfect match on <br />
+            <span>TradeHub</span>
+          </h1>
+        </div>
+        <div id="home-products">
+          <h3>Take a look at the latest products</h3>
+          <button class="btn">
+            <a href="products.html"
+              >More <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </button>
+          <div class="cards">
+            <div class="product-card">
+              <img src="images/product-jeans.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+            <div class="product-card">
+              <img src="images/product-phone.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+            <div class="product-card">
+              <img src="images/product-book.jpg" alt="" /><br />
+              <a href="product-details.html">Jeans</a>
+              <p>Riga<br />Exchanging for another pair</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="home-about">
+      <div class="about-div">
+        <h2>Learn why <span>you</span> should try trading your items</h2>
+        <p>
+          In the past 20 years, clothing production has approximately doubled
+          due to higher demand from a growing middle class around the world.
+          Meanwhile, garment usage lifetime has decreased on the consumer side.
+          This embodies the “fast fashion” phenomenon: more options, quicker
+          trend turnaround, lower prices, and unpriced damage to the
+          environment. -
+          <a
+            href="https://earth.org/data_visualization/fast-fashion-the-environment-and-climate-change-a-data-viz-story/"
+            target="_blank"
+            >Earth.org</a
+          >
+        </p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        <h4>Look at this!</h4>
+        <img src="images/vector-1.png" class="arrow" alt="vector" />
+        <img
+          src="images/statistics.jpg"
+          id="statistics"
+          alt="Photo of statistics" />
+        <button class="btn"><a href="about.html"> Learn More</a></button>
+      </div>
+    </section>
+    <footer>
+      <a id="logo" href="index.html">TradeHub</a>
+      <p class="info-footer">
+        If you have any problems contact us
+        <a href="contact.html"><span>here</span></a>
+      </p>
+      <p class="footer-list">
+        tradehub@gmail.com <br />
+        +37122083534 <br />
+        Ventspils, Latvia
+      </p>
+    </footer>
+    <script src="script.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBPEIJgwfcH37xG4EiDKccD9h9dx4HawEE",
+
+        authDomain: "tradehub-ab4a5.firebaseapp.com",
+
+        projectId: "tradehub-ab4a5",
+
+        storageBucket: "tradehub-ab4a5.appspot.com",
+
+        messagingSenderId: "553555950171",
+
+        appId: "1:553555950171:web:6e026157a898fa68509d7e",
+
+        measurementId: "G-PW1EZEMT7E",
+      };
+
+      // Initialize Firebase
+
+      const app = initializeApp(firebaseConfig);
+
+      const analytics = getAnalytics(app);
     </script>
   </body>
 </html>
