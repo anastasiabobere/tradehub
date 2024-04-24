@@ -243,7 +243,10 @@ body {
 
 #product-container {
   display: grid;
-  grid-template-areas: "filter h3" "filter product";
+  grid-template-areas: "filter h3 search" "filter product product";
+}
+#product-container .search-wrapper {
+  grid-area: search;
 }
 #product-container #filter {
   grid-area: filter;

@@ -271,9 +271,11 @@ body {
 #product-container {
   display: grid;
   grid-template-areas:
-    "filter h3"
-    "filter product";
-
+    "filter h3 search"
+    "filter product product";
+  .search-wrapper {
+    grid-area: search;
+  }
   #filter {
     grid-area: filter;
     width: 222px;
