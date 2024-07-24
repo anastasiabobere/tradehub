@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content=" Anastasia Bobere" />
+    <meta name="description" content="TradeHub" />
+    <meta name="keywords" content="Recycle thrifting TradeHub" />
+    <script
+      src="https://kit.fontawesome.com/1995a9df69.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>TradeHub</title>
   </head>
   <body>
     <header id="header">
@@ -22,7 +30,7 @@
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
         <button id="login" class="btn">
-          <a href="01-login/index.html">Login</a>
+          <a href="login.html">Login</a>
         </button>
       </nav>
       <svg
@@ -34,20 +42,21 @@
           d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
       </svg>
     </header>
-
-    <div id="form_container">
-      <div class="login">
-        <h1>Login Into Your Account here!</h1>
-        <input type="text" id="full_name" placeholder=" Name" />
-        <input type="email" id="email" placeholder="Email" />
-        <input type="password" id="password" placeholder="Password" />
-
-        <!-- <button onclick="login()">Login</button> -->
-        <button class="btn" onclick="login()">Login</button>
-        <a href="register.html">Do not have an account ?</a>
+    <section id="login">
+      <div class="container">
+        <div id="form">
+          <h1>Login Into Your Account here!</h1>
+          <form action="">
+            <input type="text" id="full_name" placeholder=" Name" />
+            <input type="email" id="email" placeholder="Email" />
+            <input type="password" id="password" placeholder="Password" />
+            <button class="btn" onclick="login()">Login</button>
+            <a href="register.html">Do not have an account ?</a>
+            <!-- <button onclick="login()">Login</button> -->
+          </form>
+        </div>
       </div>
-    </div>
-
+    </section>
     <footer>
       <a id="logo" href="index.html">TradeHub</a>
       <p>
@@ -60,5 +69,6 @@
         Ventspils, Latvia
       </p>
     </footer>
+    <script src="publicScript.js"></script>
   </body>
 </html>

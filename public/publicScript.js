@@ -12,4 +12,5 @@ document.addEventListener("DOMContentLoaded", function () {
     header.classList.remove("open");
   });
 });
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+releasePointerCapture(pointerId);
