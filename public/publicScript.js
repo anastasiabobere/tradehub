@@ -14,3 +14,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 releasePointerCapture(pointerId);
+//это скрипт для фронт
