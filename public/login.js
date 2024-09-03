@@ -13,7 +13,6 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
-
 function signInWithEmail() {
   const email = prompt("Enter your email:");
   const password = prompt("Enter your password:");
@@ -24,8 +23,10 @@ function signInWithEmail() {
       .then((userCredential) => {
         // User signed in successfully
         const user = userCredential.user;
-        showPostForm();
-        loadContent();
+
+        // Redirect to profile page IMMEDIATELY
+        window.location.href = "profile.html";
+        showProfileButton();
       })
       .catch((error) => {
         // Handle errors
@@ -44,8 +45,9 @@ function signInWithGoogle() {
     .then((result) => {
       // User signed in successfully
       const user = result.user;
-      showPostForm();
-      loadContent();
+
+      showSignOutButton();
+      showProfileButton();
     })
     .catch((error) => {
       // Handle errors
@@ -53,21 +55,80 @@ function signInWithGoogle() {
       alert("Google login failed.");
     });
 }
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, get their information
+    const userId = user.uid;
+    showProfileButton();
 
+    const userRef = database.ref("users/" + userId);
+    userRef.on("value", (snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        document.getElementById("username").textContent = userData.username;
+        document.getElementById("email").textContent = userData.email;
+        if (userData.profilePicture) {
+          document.getElementById("profile-picture").src =
+            userData.profilePicture;
+        }
+      }
+    });
+  } else {
+    // User is signed out, redirect to login page
+    window.location.href = "index.html";
+  }
+});
+
+// Function to show the profile button
+function showProfileButton() {
+  document.getElementById("profile-btn").style.display = "block";
+}
+
+function signOut() {
+  auth
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      console.log("Signed out successfully");
+      // Redirect to the login page (or another page as needed)
+      window.location.href = "index.html";
+    })
+    .catch((error) => {
+      // An error happened.
+      console.error("Error signing out:", error);
+    });
+}
 function register() {
   const email = document.getElementById("reg-email").value;
   const password = document.getElementById("reg-password").value;
+  const username = document.getElementById("reg-username").value;
   const registrationMessage = document.getElementById("registration-message");
 
-  if (email && password) {
+  if (email && password && username) {
     registrationMessage.textContent = "Creating account...";
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // User created successfully
         const user = userCredential.user;
-        registrationMessage.textContent = "Registration successful!";
-        showLoginForm(); // Show login form after successful registration
+
+        // Store username in Firebase Realtime Database
+        const userId = user.uid;
+        const userRef = database.ref("users/" + userId);
+        userRef
+          .set({
+            username: username,
+            email: email, // You can also store the email if needed
+          })
+          .then(() => {
+            registrationMessage.textContent = "Registration successful!";
+            window.location.href = "profile.html"; // Redirect to profile page
+          })
+          .catch((error) => {
+            console.error("Error storing user data:", error);
+            registrationMessage.textContent =
+              "Error completing registration. Please try again.";
+          });
       })
       .catch((error) => {
         // Handle errors
@@ -84,7 +145,7 @@ function register() {
         }
       });
   } else {
-    registrationMessage.textContent = "Please enter both email and password.";
+    registrationMessage.textContent = "Please enter all fields.";
   }
 }
 
@@ -115,6 +176,9 @@ function postContent() {
 }
 function showProfileButton() {
   document.getElementById("profile-btn").style.display = "block";
+}
+function showSignOutButton() {
+  document.getElementById("sign-out-btn").style.display = "block";
 }
 function loadContent() {
   const contentArea = document.getElementById("content-area");
@@ -152,7 +216,9 @@ function showLoginForm() {
   document.getElementById("register-form").style.display = "block";
   document.getElementById("post-form").style.display = "none";
 }
-
+function showProfileButton() {
+  document.getElementById("profile-btn").style.display = "block";
+}
 function showPostForm() {
   document.getElementById("login-form").style.display = "none";
   document.getElementById("register-form").style.display = "none";

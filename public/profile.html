@@ -33,8 +33,13 @@
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
         <!-- если это профель то надо  -->
-        <button id="profile=btn" class="btn">
-          <a href="profile.html">Your account</a>
+
+        <button id="profile-btn" class="btn">
+          <a href="profile.html">Your Account</a>
+        </button>
+
+        <button id="sign-out-btn btn" id="login" onclick="signOut()">
+          Sign Out
         </button>
       </nav>
       <svg
@@ -92,6 +97,8 @@
     </section>
 
     <script src="profile.js"></script>
+    <script src="login.js"></script>
     <script src="publicScript.js"></script>
+    <script src="firebaseUtils.js"></script>
   </body>
 </html>

@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+#profile-btn {
+  display: none;
+}
+
 img {
   width: 100px;
   height: 100px;

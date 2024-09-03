@@ -13,25 +13,48 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     // User is signed in, get their information
+//     const userId = user.uid;
+//     const userRef = database.ref("users/" + userId);
+//     userRef.on("value", (snapshot) => {
+//       const userData = snapshot.val();
+//       if (userData) {
+//         document.getElementById("username").textContent = userData.username;
+//         document.getElementById("email").textContent = userData.email;
+//         if (userData.profilePicture) {
+//           document.getElementById("profile-picture").src =
+//             userData.profilePicture;
+//         }
+//       }
+//     });
+//   } else {
+//     // User is signed out, redirect to login page
+//     window.location.href = "index.html";
+//   }
+//   showProfileButton();
+// });
+function loadUserData() {
+  const userId = auth.currentUser.uid;
+  const userRef = database.ref("users/" + userId);
+  userRef.on("value", (snapshot) => {
+    const userData = snapshot.val();
+    if (userData) {
+      document.getElementById("username").textContent = userData.username;
+      document.getElementById("email").textContent = userData.email;
+      if (userData.profilePicture) {
+        document.getElementById("profile-picture").src =
+          userData.profilePicture;
+      }
+    }
+  });
+}
+
+// Call loadUserData when the user is signed in
 auth.onAuthStateChanged((user) => {
   if (user) {
-    // User is signed in, get their information
-    const userId = user.uid;
-    const userRef = database.ref("users/" + userId);
-    userRef.on("value", (snapshot) => {
-      const userData = snapshot.val();
-      if (userData) {
-        document.getElementById("username").textContent = userData.username;
-        document.getElementById("email").textContent = userData.email;
-        if (userData.profilePicture) {
-          document.getElementById("profile-picture").src =
-            userData.profilePicture;
-        }
-      }
-    });
-  } else {
-    // User is signed out, redirect to login page
-    window.location.href = "index.html";
+    loadUserData();
   }
 });
 function uploadProfilePicture() {
@@ -74,4 +97,7 @@ function uploadProfilePicture() {
   } else {
     alert("Please select an image file.");
   }
+}
+function showProfileButton() {
+  document.getElementById("profile-btn").style.display = "block";
 }
