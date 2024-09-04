@@ -13,6 +13,30 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
+const storage = firebase.storage();
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // User is signed in, get their information
+    const userId = user.uid;
+    showProfileButton();
+
+    const userRef = database.ref("users/" + userId);
+    userRef.on("value", (snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        document.getElementById("username").textContent = userData.username;
+        document.getElementById("email").textContent = userData.email;
+        if (userData.profilePicture) {
+          document.getElementById("profile-picture").src =
+            userData.profilePicture;
+        }
+      }
+    });
+  } else {
+    // User is signed out, redirect to login page
+    window.location.href = "index.html";
+  }
+});
 function signInWithEmail() {
   const email = prompt("Enter your email:");
   const password = prompt("Enter your password:");
@@ -55,29 +79,11 @@ function signInWithGoogle() {
       alert("Google login failed.");
     });
 }
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    // User is signed in, get their information
-    const userId = user.uid;
-    showProfileButton();
 
-    const userRef = database.ref("users/" + userId);
-    userRef.on("value", (snapshot) => {
-      const userData = snapshot.val();
-      if (userData) {
-        document.getElementById("username").textContent = userData.username;
-        document.getElementById("email").textContent = userData.email;
-        if (userData.profilePicture) {
-          document.getElementById("profile-picture").src =
-            userData.profilePicture;
-        }
-      }
-    });
-  } else {
-    // User is signed out, redirect to login page
-    window.location.href = "index.html";
-  }
-});
+// Function to show the profile button
+function showProfileButton() {
+  document.getElementById("profile-btn").style.display = "block";
+}
 
 // Function to show the profile button
 function showProfileButton() {
@@ -149,36 +155,16 @@ function register() {
   }
 }
 
-function postContent() {
-  const content = document.getElementById("post-content").value;
-  const userId = auth.currentUser.uid;
-
-  if (content) {
-    const newPostRef = database.ref("posts").push();
-    newPostRef
-      .set({
-        userId: userId,
-        content: content,
-        timestamp: firebase.database.ServerValue.TIMESTAMP,
-      })
-      .then(() => {
-        document.getElementById("post-content").value = "";
-        showProfileButton();
-        loadContent();
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Error posting content.");
-      });
-  } else {
-    alert("Please enter some content!");
-  }
-}
 function showProfileButton() {
   document.getElementById("profile-btn").style.display = "block";
 }
 function showSignOutButton() {
   document.getElementById("sign-out-btn").style.display = "block";
+}
+function showLoginForm() {
+  document.getElementById("login-form").style.display = "block";
+  document.getElementById("register-form").style.display = "block";
+  document.getElementById("post-form").style.display = "none";
 }
 function loadContent() {
   const contentArea = document.getElementById("content-area");
@@ -210,11 +196,6 @@ function loadContent() {
       console.error("Error retrieving posts:", error);
     }
   });
-}
-function showLoginForm() {
-  document.getElementById("login-form").style.display = "block";
-  document.getElementById("register-form").style.display = "block";
-  document.getElementById("post-form").style.display = "none";
 }
 function showProfileButton() {
   document.getElementById("profile-btn").style.display = "block";

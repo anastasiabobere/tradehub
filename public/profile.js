@@ -1,17 +1,17 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyCINWxOmLAwuzVIUrjuyceFmYTFO33buDM",
-  authDomain: "tradehub-986b0.firebaseapp.com",
-  databaseURL:
-    "https://tradehub-986b0-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "tradehub-986b0",
-  storageBucket: "tradehub-986b0.appspot.com",
-  messagingSenderId: "209270213730",
-  appId: "1:209270213730:web:b0dadb5a62ece7a8ce953b",
-  measurementId: "G-97G3WHRM1P",
-};
-const app = firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const database = firebase.database();
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCINWxOmLAwuzVIUrjuyceFmYTFO33buDM",
+//   authDomain: "tradehub-986b0.firebaseapp.com",
+//   databaseURL:
+//     "https://tradehub-986b0-default-rtdb.europe-west1.firebasedatabase.app",
+//   projectId: "tradehub-986b0",
+//   storageBucket: "tradehub-986b0.appspot.com",
+//   messagingSenderId: "209270213730",
+//   appId: "1:209270213730:web:b0dadb5a62ece7a8ce953b",
+//   measurementId: "G-97G3WHRM1P",
+// };
+// const app = firebase.initializeApp(firebaseConfig);
+// const auth = firebase.auth();
+// const database = firebase.database();
 
 // auth.onAuthStateChanged((user) => {
 //   if (user) {
