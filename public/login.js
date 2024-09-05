@@ -14,12 +14,13 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 const storage = firebase.storage();
+//код чтобы зайти
 auth.onAuthStateChanged((user) => {
   if (user) {
     // User is signed in, get their information
     const userId = user.uid;
     showProfileButton();
-
+    hideLoginButton();
     const userRef = database.ref("users/" + userId);
     userRef.on("value", (snapshot) => {
       const userData = snapshot.val();
@@ -37,6 +38,7 @@ auth.onAuthStateChanged((user) => {
     window.location.href = "index.html";
   }
 });
+// логин емайл гугл
 function signInWithEmail() {
   const email = prompt("Enter your email:");
   const password = prompt("Enter your password:");
@@ -80,16 +82,7 @@ function signInWithGoogle() {
     });
 }
 
-// Function to show the profile button
-function showProfileButton() {
-  document.getElementById("profile-btn").style.display = "block";
-}
-
-// Function to show the profile button
-function showProfileButton() {
-  document.getElementById("profile-btn").style.display = "block";
-}
-
+// чтобы выйти
 function signOut() {
   auth
     .signOut()
@@ -104,6 +97,7 @@ function signOut() {
       console.error("Error signing out:", error);
     });
 }
+// зарегаться
 function register() {
   const email = document.getElementById("reg-email").value;
   const password = document.getElementById("reg-password").value;
@@ -154,9 +148,12 @@ function register() {
     registrationMessage.textContent = "Please enter all fields.";
   }
 }
-
+// Для кнопок и чтоьы все видно было
 function showProfileButton() {
   document.getElementById("profile-btn").style.display = "block";
+}
+function hideLoginButton() {
+  document.getElementById("login-btn").style.display = "none";
 }
 function showSignOutButton() {
   document.getElementById("sign-out-btn").style.display = "block";
@@ -196,14 +193,6 @@ function loadContent() {
       console.error("Error retrieving posts:", error);
     }
   });
-}
-function showProfileButton() {
-  document.getElementById("profile-btn").style.display = "block";
-}
-function showPostForm() {
-  document.getElementById("login-form").style.display = "none";
-  document.getElementById("register-form").style.display = "none";
-  document.getElementById("post-form").style.display = "block";
 }
 
 // Initial setup

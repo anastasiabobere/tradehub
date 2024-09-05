@@ -20,6 +20,7 @@ auth.onAuthStateChanged((user) => {
     loadUserData();
   }
 });
+
 function uploadProfilePicture() {
   const fileInput = document.getElementById("profile-picture-upload");
   const file = fileInput.files[0];
@@ -60,4 +61,60 @@ function uploadProfilePicture() {
   } else {
     alert("Please select an image file.");
   }
+}
+
+function updateUsername() {
+  const newUsername = document.getElementById("username").value;
+  const userId = auth.currentUser.uid;
+  const userRef = database.ref("users/" + userId);
+
+  userRef
+    .update({
+      username: newUsername,
+    })
+    .then(() => {
+      alert("Username updated!");
+      loadUserData(); // Reload user data to display the updated username
+    })
+    .catch((error) => {
+      console.error("Error updating username:", error);
+    });
+}
+
+function deleteAccount() {
+  const userId = auth.currentUser.uid;
+  const userRef = database.ref("users/" + userId);
+  const postsRef = database.ref("posts");
+
+  // Delete user data from the Realtime Database
+  userRef
+    .remove()
+    .then(() => {
+      // Delete posts associated with the user
+      postsRef
+        .orderByChild("userId")
+        .equalTo(userId)
+        .on("value", (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            childSnapshot.ref.remove();
+          });
+        });
+
+      // Delete the user account
+      auth.currentUser
+        .delete()
+        .then(() => {
+          alert("Account deleted!");
+          window.location.href = "index.html"; // Redirect to login page
+        })
+        .catch((error) => {
+          console.error("Error deleting account:", error);
+        });
+    })
+    .catch((error) => {
+      console.error("Error deleting user data:", error);
+    });
+}
+function goBackToProfile() {
+  window.location.href = "profile.html"; // Redirect to the profile page
 }

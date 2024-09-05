@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content=" Anastasia Bobere" />
+    <meta name="description" content="TradeHub" />
+    <meta name="keywords" content="Recycle thrifting TradeHub" />
+    <script
+      src="https://kit.fontawesome.com/1995a9df69.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <title>Account Settings</title>
+  </head>
+  <body>
+    <h1>Account Settings</h1>
+    <div>
+      <img id="profile-picture" src="" alt="Profile Picture" />
+      <input type="file" id="profile-picture-upload" />
+      <button onclick="uploadProfilePicture()">Upload Profile Picture</button>
+    </div>
+
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" value="" />
+      <button onclick="updateUsername()">Update Username</button>
+    </div>
+
+    <div>
+      <button onclick="deleteAccount()">Delete Account</button>
+    </div>
+    <div>
+      <button onclick="goBackToProfile()">Back to Profile</button>
+    </div>
+    <script src="publicScript.js"></script>
+    <script src="profile.js"></script>
+    <script src="login.js"></script>
+    <script src="firebaseUtils.js"></script>
+    <script src="settings.js"></script>
+  </body>
+</html>
