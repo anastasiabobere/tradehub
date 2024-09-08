@@ -18,7 +18,9 @@ const storage = firebase.storage();
 auth.onAuthStateChanged((user) => {
   if (user) {
     // User is signed in, get their information
+    console.log("User is signed in");
     const userId = user.uid;
+
     showProfileButton();
     hideLoginButton();
     const userRef = database.ref("users/" + userId);
@@ -35,7 +37,9 @@ auth.onAuthStateChanged((user) => {
     });
   } else {
     // User is signed out, redirect to login page
-    window.location.href = "index.html";
+    // window.location.href = "index.html";
+    hideProfileButton();
+    console.log("No user signed in");
   }
 });
 // логин емайл гугл
@@ -150,10 +154,20 @@ function register() {
 }
 // Для кнопок и чтоьы все видно было
 function showProfileButton() {
-  document.getElementById("profile-btn").style.display = "block";
+  document.getElementById("account-btn").style.display = "block";
+}
+function hideProfileButton() {
+  document.getElementById("account-btn").style.display = "none";
 }
 function hideLoginButton() {
-  document.getElementById("login-btn").style.display = "none";
+  const loginButton = document.getElementById("login-btn");
+  if (loginButton) {
+    loginButton.classList.add("hidden");
+    loginButton.style.display = "none";
+    console.log("Login button hidden");
+  } else {
+    console.error("Login button not found");
+  }
 }
 function showSignOutButton() {
   document.getElementById("sign-out-btn").style.display = "block";
@@ -194,6 +208,32 @@ function loadContent() {
     }
   });
 }
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // Push the form data to Firebase Realtime Database
+    const submissionsRef = firebase.database().ref("contactSubmissions");
+    submissionsRef
+      .push({
+        name: name,
+        email: email,
+        message: message,
+        timestamp: firebase.database.ServerValue.TIMESTAMP,
+      })
+      .then(() => {
+        alert("Thank you for contacting us!");
+        document.getElementById("contactForm").reset(); // Clear the form
+      })
+      .catch((error) => {
+        console.error("Error submitting contact form:", error);
+      });
+  });
 
 // Initial setup
 showLoginForm();

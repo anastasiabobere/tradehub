@@ -6,7 +6,7 @@
 }
 
 #profile-btn {
-  display: none;
+  opacity: 0;
 }
 
 img {
@@ -32,6 +32,14 @@ a {
   height: 37px;
   border-radius: 50px;
   border: #7fcd25;
+}
+
+#login-btn {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 
 .btn:hover {
@@ -390,41 +398,6 @@ footer p {
 }
 footer span {
   color: #7fcd25;
-}
-
-#form_container {
-  width: 100vw;
-  border: 1px solid #acacac;
-  animation: introLoad 2s ease;
-  border-radius: 10px;
-  text-align: center;
-}
-#form_container a {
-  color: #282828 !important;
-}
-#form_container .login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: center;
-  gap: 1.5rem;
-  width: 720px;
-  height: 544px;
-}
-#form_container .login input,
-#form_container .login textarea {
-  width: 90%;
-  color: #808080;
-  font-size: 15px;
-  font-weight: 300;
-  border: 1px solid #acacac;
-  padding: 1.2rem;
-  font-family: Alegreya Sans;
-  border-radius: 5px;
-}
-#form_container .login .text-input:focus {
-  border: 2px solid #808080;
-  outline: none;
 }
 
 @media screen and (max-width: 900px) {
