@@ -14,7 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <title>TradeHub</title>
+    <title>New Product</title>
   </head>
   <body>
     <header id="header">
@@ -50,18 +50,22 @@
           d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
       </svg>
     </header>
-    <h1>Posts</h1>
-    <select id="filterCondition">
-      <option value="all">All Conditions</option>
-      <option value="new">New</option>
-      <option value="used">Used</option>
-      <option value="refurbished">Refurbished</option>
-    </select>
-    <input type="text" id="filterLocation" placeholder="Filter by Location" />
-    <button onclick="loadPosts()">Filter</button>
-
-    <div id="postsContainer"><div class="cards"></div></div>
-
+    <h1>Create a New Product</h1>
+    <form id="createPostForm">
+      <input type="text" id="title" placeholder="Product Title" required />
+      <textarea
+        id="description"
+        placeholder="Product Description"
+        required></textarea>
+      <input type="text" id="location" placeholder="Your Location" required />
+      <select id="condition">
+        <option value="new">New</option>
+        <option value="used">Used</option>
+        <option value="refurbished">Refurbished</option>
+      </select>
+      <input type="file" id="postImage" />
+      <button type="submit">Create Product</button>
+    </form>
     <footer>
       <a id="logo" href="index.html">TradeHub</a>
       <p>
@@ -75,10 +79,7 @@
       </p>
     </footer>
     <script src="login.js"></script>
-    <script src="posts.js"></script>
-    <script src="display-posts.js"></script>
+    <script src="create-post.js"></script>
     <script src="publicScript.js"></script>
-    <script src="profile.js"></script>
-    <script src="firebaseUtils.js"></script>
   </body>
 </html>

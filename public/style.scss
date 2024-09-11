@@ -61,29 +61,24 @@ h5 {
   font-weight: 400;
 }
 
-.cards {
-  display: flex;
-  justify-content: space-between;
-
-  .product-card {
-    background: $bg-grey;
-    text-align: left;
-    padding: 1rem;
-    border-radius: 5px;
-    margin: 2rem;
-    width: 285px;
-    height: 271px;
-    img {
-      border-radius: 10px;
-      display: table;
-      margin: 0 auto;
-      width: 168px;
-      height: 161px;
-    }
-    a {
-      color: black !important;
-      font-weight: 500;
-    }
+.product-card {
+  background: $bg-grey;
+  text-align: left;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 2rem;
+  width: 285px;
+  height: 271px;
+  img {
+    border-radius: 10px;
+    display: table;
+    margin: 0 auto;
+    width: 168px;
+    height: 161px;
+  }
+  a {
+    color: black !important;
+    font-weight: 500;
   }
 }
 
@@ -258,8 +253,8 @@ body {
         input,
         textarea {
           width: 90%;
-          color: #808080;
-          font-size: 15px;
+          color: #3b3b3b;
+          font-size: 20px;
           font-weight: 300;
           border: 1px solid #acacac;
           padding: 1.2rem;

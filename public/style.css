@@ -67,11 +67,7 @@ h5 {
   font-weight: 400;
 }
 
-.cards {
-  display: flex;
-  justify-content: space-between;
-}
-.cards .product-card {
+.product-card {
   background: #e8e8e8;
   text-align: left;
   padding: 1rem;
@@ -80,14 +76,14 @@ h5 {
   width: 285px;
   height: 271px;
 }
-.cards .product-card img {
+.product-card img {
   border-radius: 10px;
   display: table;
   margin: 0 auto;
   width: 168px;
   height: 161px;
 }
-.cards .product-card a {
+.product-card a {
   color: black !important;
   font-weight: 500;
 }
@@ -240,8 +236,8 @@ body {
 #contact .container #form form input,
 #contact .container #form form textarea {
   width: 90%;
-  color: #808080;
-  font-size: 15px;
+  color: #3b3b3b;
+  font-size: 20px;
   font-weight: 300;
   border: 1px solid #acacac;
   padding: 1.2rem;
