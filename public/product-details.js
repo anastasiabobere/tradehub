@@ -26,3 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+function viewUserProfile(userId) {
+  window.location.href = `user-profile.html?userId=${userId}`;
+}

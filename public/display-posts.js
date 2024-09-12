@@ -1,5 +1,5 @@
 function loadPosts() {
-  // Get filter values
+  // Get f values
   const conditionFilter = document.getElementById("filterCondition").value;
   const locationFilter = document
     .getElementById("filterLocation")
@@ -9,10 +9,10 @@ function loadPosts() {
   // Clear previous posts
   postsContainer.innerHTML = "";
 
-  // Reference to the posts in the database
+  // Reference to the posts in the dsb
   const postsRef = firebase.database().ref("posts");
 
-  // Load posts once (not real-time)
+  // Load posts
   postsRef
     .once("value", (snapshot) => {
       snapshot.forEach((childSnapshot) => {
@@ -22,7 +22,7 @@ function loadPosts() {
           ? firebase.auth().currentUser.uid
           : null;
 
-        // Apply filtering logic
+        // filter
         const matchesCondition =
           conditionFilter === "all" || post.condition === conditionFilter;
         const matchesLocation =
@@ -45,8 +45,8 @@ function loadPosts() {
           // Check if the current user is the author of the post
           if (currentUserId && post.userId === currentUserId) {
             postElement.innerHTML += `
-              <button onclick="editPost('${postId}')">Edit</button>
-              <button onclick="deletePost('${postId}')">Delete</button>
+              <button class="btn" onclick="editPost('${postId}')">Edit</button>
+              <button class="btn" onclick="deletePost('${postId}')">Delete</button>
             `;
           }
 
@@ -84,3 +84,73 @@ function deletePost(postId) {
       });
   }
 }
+
+function loadUserPosts() {
+  const userId = firebase.auth().currentUser.uid;
+  const postsContainer = document.getElementById("userPostsContainer");
+
+  postsContainer.innerHTML = ""; // Clear previous posts
+
+  const postsRef = firebase
+    .database()
+    .ref("posts")
+    .orderByChild("userId")
+    .equalTo(userId);
+
+  postsRef.once("value", (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      const post = childSnapshot.val();
+
+      // Create post element and append it to the container
+      const postElement = document.createElement("div");
+
+      postElement.classList.add("product-card");
+      postElement.innerHTML = `
+        <img src="${
+          post.imageUrl || "images/default-image.jpg"
+        }" alt="Post Image" /><br />
+        <a href="product-details.html?postId=${childSnapshot.key}">${
+        post.title
+      }</a>
+        <p>${post.location}<br />${post.description}</p>
+        <button class="btn" onclick="editPost('${
+          childSnapshot.key
+        }')">Edit</button>
+        <button class="btn" onclick="deletePost('${
+          childSnapshot.key
+        }')">Delete</button>
+      `;
+      postsContainer.appendChild(postElement);
+    });
+  });
+}
+
+// Function to handle post editing
+function editPost(postId) {
+  // Redirect to an editing page with post ID in query params
+  window.location.href = `edit-post.html?postId=${postId}`;
+}
+
+// Function to handle post deletion
+function deletePost(postId) {
+  if (confirm("Are you sure you want to delete this post?")) {
+    firebase
+      .database()
+      .ref("posts/" + postId)
+      .remove()
+      .then(() => {
+        alert("Post deleted successfully.");
+        loadUserPosts(); // Reload posts after deletion
+      })
+      .catch((error) => {
+        console.error("Error deleting post:", error);
+      });
+  }
+}
+
+// Load the user's posts when authenticated
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    loadUserPosts();
+  }
+});

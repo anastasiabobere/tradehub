@@ -67,8 +67,8 @@ h5 {
   padding: 1rem;
   border-radius: 5px;
   margin: 2rem;
-  width: 285px;
-  height: 271px;
+  width: 18rem;
+  height: 19rem;
   img {
     border-radius: 10px;
     display: table;
@@ -81,11 +81,29 @@ h5 {
     font-weight: 500;
   }
 }
-
+#postsContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Makes the grid responsive */
+  gap: 20px; /* Space between grid items */
+  // width: 90%;
+  box-sizing: border-box;
+}
+#userPostsContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(250px, 1fr)
+  ); /* Makes the grid responsive */
+  gap: 20px; /* Space between grid items */
+}
 // Home page
 body {
   height: 100vh;
   font-family: "Alegreya Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 //section home
@@ -224,7 +242,7 @@ body {
 #contact {
   .container {
     display: flex;
-    height: calc(100vh - 100px);
+    // height: calc(100vh - 100px);
     flex-direction: row;
     padding: 2rem;
     justify-content: center;
