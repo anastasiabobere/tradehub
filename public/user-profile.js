@@ -4,12 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!userId || /[.#$[\]]/.test(userId)) {
     console.error("Invalid or missing userId in URL.");
-    alert("Invalid user ID. Cannot load profile.");
+
+    console.log("sometnhing wrong at if state,emt");
     return; // Stop execution if userId is invalid
   }
+  function startChat(receiverId) {
+    // Generate a unique chat ID
+    const chatId = [firebase.auth().currentUser.uid, receiverId]
+      .sort()
+      .join("_");
 
-  const userRef = firebase.database().ref("users/" + userId);
-
+    // Redirect to chat page with chat ID
+    window.location.href = `chat.html?chatId=${chatId}`;
+  }
+  const userRef = database.ref("users/" + userId);
   userRef
     .once("value")
     .then((snapshot) => {
@@ -40,12 +48,3 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("An error occurred while loading user data.");
     });
 });
-
-function startChat(receiverId) {
-  if (receiverId) {
-    window.location.href = `chat.html?receiverId=${receiverId}`;
-  } else {
-    console.error("Invalid receiverId for starting chat.");
-    alert("Cannot start chat due to invalid user ID.");
-  }
-}

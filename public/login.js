@@ -1,4 +1,3 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCINWxOmLAwuzVIUrjuyceFmYTFO33buDM",
   authDomain: "tradehub-986b0.firebaseapp.com",
@@ -14,6 +13,7 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 const storage = firebase.storage();
+
 //код чтобы зайти
 auth.onAuthStateChanged((user) => {
   if (user) {
