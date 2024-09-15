@@ -60,7 +60,11 @@ h5 {
   font-size: 20px;
   font-weight: 400;
 }
-
+.chat-item {
+  a {
+    color: #282828;
+  }
+}
 .product-card {
   background: $bg-grey;
   text-align: left;
@@ -90,6 +94,10 @@ h5 {
   gap: 20px; /* Space between grid items */
   // width: 90%;
   box-sizing: border-box;
+}
+#postContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
 }
 #userPostsContainer {
   display: grid;

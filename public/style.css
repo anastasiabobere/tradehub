@@ -67,6 +67,10 @@ h5 {
   font-weight: 400;
 }
 
+.chat-item a {
+  color: #282828;
+}
+
 .product-card {
   background: #e8e8e8;
   text-align: left;
@@ -93,6 +97,11 @@ h5 {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Makes the grid responsive */
   gap: 20px; /* Space between grid items */
   box-sizing: border-box;
+}
+
+#postContainer {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
 }
 
 #userPostsContainer {
