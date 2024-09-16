@@ -17,25 +17,30 @@
     <title>Account Settings</title>
   </head>
   <body>
-    <h1>Account Settings</h1>
-    <div>
-      <img id="profile-picture" src="" alt="Profile Picture" />
-      <input type="file" id="profile-picture-upload" />
-      <button onclick="uploadProfilePicture()">Upload Profile Picture</button>
-    </div>
+    <section id="setting">
+      <h1>Account Settings</h1>
+      <div>
+        <img id="profile-picture" src="" alt="Profile Picture" />
+        <input type="file" id="profile-picture-upload" />
+        <button class="btn" onclick="uploadProfilePicture()">
+          Upload Profile Picture
+        </button>
+      </div>
 
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" value="" />
-      <button onclick="updateUsername()">Update Username</button>
-    </div>
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" placeholder="TradeFan" id="username" value="" />
+        <button class="btn" onclick="updateUsername()">Update Username</button>
+      </div>
 
-    <div>
-      <button onclick="deleteAccount()">Delete Account</button>
-    </div>
-    <div>
-      <button onclick="goBackToProfile()">Back to Profile</button>
-    </div>
+      <div>
+        <button class="btn" onclick="deleteAccount()">Delete Account</button>
+      </div>
+      <div>
+        <button class="btn" onclick="goBackToProfile()">Back to Profile</button>
+      </div>
+    </section>
+
     <script src="publicScript.js"></script>
     <script src="profile.js"></script>
     <script src="login.js"></script>

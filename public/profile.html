@@ -35,14 +35,15 @@
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
         <!-- если это профель то надо  -->
+        <div class="buttons">
+          <button class="btn">
+            <a href="settings.html">Settings</a>
+          </button>
 
-        <button class="btn">
-          <a href="settings.html">Settings</a>
-        </button>
-
-        <button id="sign-out-btn btn" id="login" onclick="signOut()">
-          Sign Out
-        </button>
+          <button class="btn" id="sign-out-btn " id="login" onclick="signOut()">
+            Sign Out
+          </button>
+        </div>
       </nav>
       <svg
         class="menu"
@@ -64,8 +65,11 @@
           <a href="create-post.html">Add new product</a>
         </button>
       </div>
-      <h1>My Chats</h1>
-      <div id="chatsList"></div>
+      <div class="chats">
+        <h1>My Chats</h1>
+        <div id="chatsList"></div>
+      </div>
+
       <div id="userPostsContainer"></div>
     </section>
     <footer>
@@ -80,12 +84,12 @@
         Ventspils, Latvia
       </p>
     </footer>
+    <script src="firebaseUtils.js"></script>
     <script src="login.js"></script>
     <script src="chat.js"></script>
     <script src="posts.js"></script>
     <script src="display-posts.js"></script>
     <script src="profile.js"></script>
     <script src="publicScript.js"></script>
-    <script src="firebaseUtils.js"></script>
   </body>
 </html>

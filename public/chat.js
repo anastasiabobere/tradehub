@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       console.log("User is not logged in.");
-      window.location.href = "login.html"; // Optionally redirect to login page
     }
   });
 });

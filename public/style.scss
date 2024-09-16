@@ -84,6 +84,9 @@ h5 {
     color: black !important;
     font-weight: 500;
   }
+  p {
+    padding-bottom: 0.4rem;
+  }
 }
 #postsContainer {
   display: grid;
@@ -345,39 +348,39 @@ body {
     }
   }
 }
-//products
-#product-container {
-  display: grid;
-  grid-template-areas:
-    "filter h3 search"
-    "filter product product";
-  .search-wrapper {
-    grid-area: search;
-  }
-  #filter {
-    grid-area: filter;
-    width: 222px;
-    height: 743px;
-    background-color: #ececec;
-    padding: 1rem;
-    h4 {
-      margin: 1rem;
-    }
-    h5 {
-      margin: 0.6rem;
-    }
-  }
-  h3 {
-    grid-area: h3;
-    z-index: -1;
-    margin: 1rem;
-  }
-  .cards {
-    grid-area: product;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+// //products
+// #product-container {
+//   display: grid;
+//   grid-template-areas:
+//     "filter h3 search"
+//     "filter product product";
+//   .search-wrapper {
+//     grid-area: search;
+//   }
+//   #filter {
+//     grid-area: filter;
+//     width: 222px;
+//     height: 743px;
+//     background-color: #ececec;
+//     padding: 1rem;
+//     h4 {
+//       margin: 1rem;
+//     }
+//     h5 {
+//       margin: 0.6rem;
+//     }
+//   }
+//   h3 {
+//     grid-area: h3;
+//     z-index: -1;
+//     margin: 1rem;
+//   }
+//   .cards {
+//     grid-area: product;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+// }
 
 //product details
 #product-details {
@@ -431,6 +434,25 @@ body {
       margin-top: 5rem;
     }
   }
+}
+#filterCondition {
+  margin: 2rem;
+  padding-left: 1rem;
+  width: 120px;
+}
+#filterLocation:focus {
+  outline: none !important;
+  border: 1px solid #7fcd25;
+  box-shadow: 0 0 10px #7fcd25;
+}
+#filterLocation {
+  margin: 1rem;
+}
+.chats {
+  margin: 1rem;
+}
+#setting {
+  text-align: center;
 }
 //footer
 footer {
@@ -641,6 +663,16 @@ footer {
         }
       }
     }
+  }
+  #postContainer {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(250px, 1fr)
+    ); /* Makes the grid responsive */
+    gap: 20px; /* Space between grid items */
+    // width: 90%;
+    box-sizing: border-box;
   }
 }
 @media only screen and (min-width: 901px) {
