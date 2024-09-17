@@ -14,7 +14,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <title>Account Settings</title>
+    <title>TradeHub | Account Settings</title>
   </head>
   <body>
     <section id="setting">
@@ -22,22 +22,20 @@
       <div>
         <img id="profile-picture" src="" alt="Profile Picture" />
         <input type="file" id="profile-picture-upload" />
-        <button class="btn" onclick="uploadProfilePicture()">
-          Upload Profile Picture
-        </button>
+        <button onclick="uploadProfilePicture()">Upload Profile Picture</button>
       </div>
 
       <div>
         <label for="username">Username:</label>
         <input type="text" placeholder="TradeFan" id="username" value="" />
-        <button class="btn" onclick="updateUsername()">Update Username</button>
+        <button onclick="updateUsername()">Update Username</button>
       </div>
 
       <div>
-        <button class="btn" onclick="deleteAccount()">Delete Account</button>
+        <button onclick="deleteAccount()">Delete Account</button>
       </div>
       <div>
-        <button class="btn" onclick="goBackToProfile()">Back to Profile</button>
+        <button onclick="goBackToProfile()">Back to Profile</button>
       </div>
     </section>
 

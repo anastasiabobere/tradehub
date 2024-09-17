@@ -390,6 +390,113 @@ body {
 
 #setting {
   text-align: center;
+  animation: introLoad 2s ease;
+  border-radius: 10px;
+  text-align: center;
+}
+#setting h1 {
+  padding: 4rem;
+}
+#setting div {
+  padding: 1.5rem;
+}
+#setting button {
+  color: #7fcd25;
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 112px;
+  height: 37px;
+  border-radius: 20px;
+  border: 1px solid #7fcd25;
+}
+#setting button:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+#login-page {
+  text-align: center;
+  animation: introLoad 2s ease;
+  border-radius: 10px;
+  text-align: center;
+}
+#login-page h2 {
+  padding: 2rem;
+  font-size: 2rem;
+}
+#login-page div {
+  padding: 1.5rem;
+}
+#login-page a {
+  color: #282828;
+}
+#login-page button {
+  color: #7fcd25;
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 112px;
+  height: 37px;
+  border-radius: 20px;
+  border: 1px solid #7fcd25;
+}
+#login-page button:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.createPost {
+  text-align: center;
+  animation: introLoad 2s ease;
+  border-radius: 10px;
+  text-align: center;
+}
+.createPost form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem;
+}
+.createPost form input,
+.createPost form textarea,
+.createPost form select {
+  margin: 1.6rem;
+  width: 20rem;
+}
+.createPost h1 {
+  margin: 2rem;
+  font-size: 2rem;
+}
+.createPost div {
+  padding: 1.5rem;
+}
+.createPost a {
+  color: #282828;
+}
+.createPost button {
+  color: #7fcd25;
+  font-weight: 600;
+  background-color: #ffffff;
+  cursor: pointer;
+  width: 112px;
+  height: 37px;
+  border-radius: 20px;
+  border: 1px solid #7fcd25;
+}
+.createPost button:hover {
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.more-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 1rem;
+}
+.more-info p {
+  width: 20rem;
 }
 
 footer {

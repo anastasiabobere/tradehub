@@ -14,28 +14,31 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <title>Edit Product</title>
+    <title>TradeHub | Edit</title>
   </head>
   <body>
-    <h1>Edit Product</h1>
-    <form id="editPostForm">
-      <input type="text" id="title" placeholder="Product Title" required />
-      <textarea
-        id="description"
-        placeholder="Product Description"
-        required></textarea>
-      <input type="text" id="location" placeholder="Your Location" required />
-      <select id="condition">
-        <option value="new">New</option>
-        <option value="used">Used</option>
-        <option value="refurbished">Refurbished</option>
-      </select>
-      <input type="file" id="postImage" />
-      <button type="submit">Save Changes</button>
-    </form>
-    <div>
-      <button onclick="deletePost()">Delete Post</button>
-    </div>
+    <section class="createPost">
+      <h1>Edit Product</h1>
+      <form id="editPostForm">
+        <input type="text" id="title" placeholder="Product Title" required />
+        <textarea
+          id="description"
+          placeholder="Product Description"
+          required></textarea>
+        <input type="text" id="location" placeholder="Your Location" required />
+        <select id="condition">
+          <option value="new">New</option>
+          <option value="used">Used</option>
+          <option value="refurbished">Refurbished</option>
+        </select>
+        <input type="file" id="postImage" />
+        <button type="submit">Save Changes</button>
+      </form>
+      <div>
+        <button onclick="deletePost()">Delete Post</button>
+        <button><a href="products.html">Back</a></button>
+      </div>
+    </section>
     <script src="login.js"></script>
     <script src="edit-post.js"></script>
     <script src="create-post.js"></script>

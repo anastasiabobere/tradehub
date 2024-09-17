@@ -42,6 +42,7 @@ document
     const description = document.getElementById("description").value;
     const location = document.getElementById("location").value;
     const condition = document.getElementById("condition").value;
+    const contact = document.getElementById("contact-info").value;
     const fileInput = document.getElementById("postImage");
     const file = fileInput.files[0];
 
@@ -54,6 +55,7 @@ document
           description: description,
           location: location,
           condition: condition,
+          contact: contact,
           imageUrl: imageUrl || null, // Update imageUrl if new image was uploaded
         })
         .then(() => {

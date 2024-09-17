@@ -8,6 +8,26 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("sometnhing wrong at if state,emt");
     return; // Stop execution if userId is invalid
   }
+  // Reference to user's block list in the database
+  const userBlocksRef = firebase.database().ref(`users/${userId}/blockedUsers`);
+
+  // Handle blocking user
+  document.getElementById("blockUser").addEventListener("click", () => {
+    userBlocksRef
+      .child(userId)
+      .set(true)
+      .then(() => {
+        alert("User has been blocked.");
+      })
+      .catch((error) => {
+        console.error("Error blocking user:", error);
+      });
+  });
+
+  // Handle reporting user
+  document.getElementById("reportUser").addEventListener("click", () => {
+    window.location.href = "contact.html"; // Redirect to the contact us page for reporting
+  });
   function startChat(receiverId) {
     // Generate a unique chat ID
     const chatId = [firebase.auth().currentUser.uid, receiverId]

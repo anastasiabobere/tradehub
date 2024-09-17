@@ -5,6 +5,7 @@ document
 
     const title = document.getElementById("title").value;
     const description = document.getElementById("description").value;
+    const contact = document.getElementById("contact-info").value;
     const location = document.getElementById("location").value;
     const condition = document.getElementById("condition").value;
     const fileInput = document.getElementById("postImage");
@@ -28,6 +29,7 @@ document
               postRef.key,
               title,
               description,
+              contact,
               location,
               condition,
               url,
@@ -44,6 +46,7 @@ document
         postRef.key,
         title,
         description,
+        contact,
         location,
         condition,
         null,
@@ -56,6 +59,7 @@ function savePostData(
   postId,
   title,
   description,
+  contact,
   location,
   condition,
   imageUrl,
@@ -67,6 +71,7 @@ function savePostData(
     .set({
       title: title,
       description: description,
+      contact: contact,
       location: location,
       condition: condition,
       imageUrl: imageUrl || null,

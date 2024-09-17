@@ -7,11 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Retrieve messages ordered by timestamp
+      // Retrieve messages ordered by timestamp (oldest first)
       const messagesRefForDisplay = firebase
         .database()
         .ref(`chats/${chatId}/messages`)
-        .orderByChild("timestamp");
+        .orderByChild("timestamp")
+        .limitToLast(100); // Limit to last 100 messages for performance
       // Use a regular reference for sending messages
       const messagesRefForSending = firebase
         .database()
@@ -25,26 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
           callback(userData.username);
         });
       }
+
       function formatTimestamp(timestamp) {
         const date = new Date(timestamp);
         return date.toLocaleString(); // Customize the format if needed
       }
 
-      // Load messages ordered by timestamp
-      messagesRefForDisplay.on("child_added", (snapshot) => {
-        const message = snapshot.val();
-        getUsername(message.senderId, (username) => {
-          const messageElement = document.createElement("div");
-          messageElement.classList.add("message");
-          const formattedTimestamp = formatTimestamp(message.timestamp);
+      // Load messages ordered by timestamp (oldest first)
+      messagesRefForDisplay.on("value", (snapshot) => {
+        document.getElementById("messages").innerHTML = ""; // Clear previous messages
+        // Sort the messages by timestamp before displaying
+        const messages = snapshot.val();
+        if (messages) {
+          const sortedMessages = Object.entries(messages)
+            .sort((a, b) => a[1].timestamp - b[1].timestamp)
+            .map(([key, value]) => ({ ...value, key }));
 
-          messageElement.innerHTML = `<span class="sender">${username}:</span> ${message.message} <span class="timestamp">(${formattedTimestamp})</span>`;
-          document.getElementById("messages").appendChild(messageElement);
+          sortedMessages.forEach((message) => {
+            getUsername(message.senderId, (username) => {
+              const messageElement = document.createElement("div");
+              messageElement.classList.add("message");
+              const formattedTimestamp = formatTimestamp(message.timestamp);
 
-          // Auto scroll to the bottom after a new message is added
-          document.getElementById("messages").scrollTop =
-            document.getElementById("messages").scrollHeight;
-        });
+              messageElement.innerHTML = `<span class="sender">${username}:</span> ${message.message} <span class="timestamp">(${formattedTimestamp})</span>`;
+              document.getElementById("messages").appendChild(messageElement);
+            });
+          });
+        }
       });
 
       // Send message

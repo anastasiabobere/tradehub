@@ -15,6 +15,7 @@ postsRef.on("value", (snapshot) => {
             <p>${post.description}</p>
             <p>Location: ${post.location}</p>
             <p>Condition: ${post.condition}</p>
+            <p>Contact: ${post.contact}</p>
         `;
 
     // Get the current user's ID

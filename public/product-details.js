@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("location").textContent = postData.location;
       document.getElementById("condition").textContent = postData.condition;
       document.getElementById("description").textContent = postData.description;
-      document.getElementById("contact-info").textContent =
-        postData.contactInfo;
+      document.getElementById("contact-info").textContent = postData.contact;
       document.getElementById("main").src = postData.imageUrl || "default.jpg";
 
       // Update the "View User Account" button with the correct userId
