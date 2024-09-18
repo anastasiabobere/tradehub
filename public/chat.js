@@ -7,12 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Retrieve messages ordered by timestamp (oldest first)
+      // Retrieve messages ordered by timestamp for display
       const messagesRefForDisplay = firebase
         .database()
         .ref(`chats/${chatId}/messages`)
-        .orderByChild("timestamp")
-        .limitToLast(100); // Limit to last 100 messages for performance
+        .orderByChild("timestamp");
+
       // Use a regular reference for sending messages
       const messagesRefForSending = firebase
         .database()
@@ -27,32 +27,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
+      // Function to format the timestamp
       function formatTimestamp(timestamp) {
         const date = new Date(timestamp);
-        return date.toLocaleString(); // Customize the format if needed
+        return date.toLocaleString();
       }
 
-      // Load messages ordered by timestamp (oldest first)
-      messagesRefForDisplay.on("value", (snapshot) => {
-        document.getElementById("messages").innerHTML = ""; // Clear previous messages
-        // Sort the messages by timestamp before displaying
-        const messages = snapshot.val();
-        if (messages) {
-          const sortedMessages = Object.entries(messages)
-            .sort((a, b) => a[1].timestamp - b[1].timestamp)
-            .map(([key, value]) => ({ ...value, key }));
+      // Load messages ordered by timestamp
+      messagesRefForDisplay.on("child_added", (snapshot) => {
+        const message = snapshot.val();
+        getUsername(message.senderId, (username) => {
+          const messageElement = document.createElement("div");
+          messageElement.classList.add("message");
 
-          sortedMessages.forEach((message) => {
-            getUsername(message.senderId, (username) => {
-              const messageElement = document.createElement("div");
-              messageElement.classList.add("message");
-              const formattedTimestamp = formatTimestamp(message.timestamp);
+          // Add a specific class for the current user's messages
+          if (message.senderId === user.uid) {
+            messageElement.classList.add("currentUserMessage"); // Add class for current user
+          } else {
+            messageElement.classList.add("otherUserMessage"); // Add class for other users
+          }
 
-              messageElement.innerHTML = `<span class="sender">${username}:</span> ${message.message} <span class="timestamp">(${formattedTimestamp})</span>`;
-              document.getElementById("messages").appendChild(messageElement);
-            });
-          });
-        }
+          const formattedTimestamp = formatTimestamp(message.timestamp);
+
+          messageElement.innerHTML = `
+            <span class="sender">${username}:</span> 
+            ${message.message} 
+            <span class="timestamp">(${formattedTimestamp})</span>`;
+          document.getElementById("messages").appendChild(messageElement);
+
+          // Auto scroll to the bottom after a new message is added
+          document.getElementById("messages").scrollTop =
+            document.getElementById("messages").scrollHeight;
+        });
       });
 
       // Send message
@@ -60,11 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const messageInput = document.getElementById("messageInput");
         const messageText = messageInput.value.trim();
         if (messageText) {
-          // Use the unfiltered messagesRef for sending
           messagesRefForSending
             .push({
               message: messageText,
-              senderId: user.uid, // Use user.uid here
+              senderId: user.uid,
               timestamp: Date.now(),
             })
             .then(() => {
