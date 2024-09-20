@@ -6,7 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Invalid or missing chatId in URL.");
         return;
       }
-
+      // Function to format the timestamp
+      function formatTimestamp(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleString();
+      }
       // Retrieve messages ordered by timestamp for display
       const messagesRefForDisplay = firebase
         .database()
@@ -18,7 +22,28 @@ document.addEventListener("DOMContentLoaded", () => {
         .database()
         .ref(`chats/${chatId}/messages`);
 
-      // Function to get username from user ID
+      // Load messages ordered by timestamp
+      messagesRefForDisplay.on("child_added", (snapshot) => {
+        const message = snapshot.val();
+        const messageElement = document.createElement("div");
+        messageElement.classList.add("message");
+        if (message.senderId === user.uid) {
+          messageElement.classList.add("currentUserMessage"); // Add class for current user
+        } else {
+          messageElement.classList.add("otherUserMessage"); // Add class for other users
+        }
+        document.getElementById("messages").appendChild(messageElement);
+        getUsername(message.senderId, (username) => {
+          const formattedTimestamp = formatTimestamp(message.timestamp);
+
+          messageElement.innerHTML = `<span class="sender">${username}:</span> ${message.message} <span class="timestamp">(${formattedTimestamp})</span>`;
+
+          // Auto scroll to the bottom after a new message is added
+          document.getElementById("messages").scrollTop =
+            document.getElementById("messages").scrollHeight;
+        });
+      });
+      // // Function to get username from user ID
       function getUsername(userId, callback) {
         const userRef = firebase.database().ref(`users/${userId}`);
         userRef.once("value", (snapshot) => {
@@ -27,39 +52,33 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Function to format the timestamp
-      function formatTimestamp(timestamp) {
-        const date = new Date(timestamp);
-        return date.toLocaleString();
-      }
-
       // Load messages ordered by timestamp
-      messagesRefForDisplay.on("child_added", (snapshot) => {
-        const message = snapshot.val();
-        getUsername(message.senderId, (username) => {
-          const messageElement = document.createElement("div");
-          messageElement.classList.add("message");
+      // messagesRefForDisplay.on("child_added", (snapshot) => {
+      //   const message = snapshot.val();
+      //   getUsername(message.senderId, (username) => {
+      //     const messageElement = document.createElement("div");
+      //     messageElement.classList.add("message");
 
-          // Add a specific class for the current user's messages
-          if (message.senderId === user.uid) {
-            messageElement.classList.add("currentUserMessage"); // Add class for current user
-          } else {
-            messageElement.classList.add("otherUserMessage"); // Add class for other users
-          }
+      //     // Add a specific class for the current user's messages
+      //     if (message.senderId === user.uid) {
+      //       messageElement.classList.add("currentUserMessage"); // Add class for current user
+      //     } else {
+      //       messageElement.classList.add("otherUserMessage"); // Add class for other users
+      //     }
 
-          const formattedTimestamp = formatTimestamp(message.timestamp);
+      //     const formattedTimestamp = formatTimestamp(message.timestamp);
 
-          messageElement.innerHTML = `
-            <span class="sender">${username}:</span> 
-            ${message.message} 
-            <span class="timestamp">(${formattedTimestamp})</span>`;
-          document.getElementById("messages").appendChild(messageElement);
+      //     messageElement.innerHTML = `
+      //       <span class="sender">${username}:</span>
+      //       ${message.message}
+      //       <span class="timestamp">(${formattedTimestamp})</span>`;
+      //     document.getElementById("messages").appendChild(messageElement);
 
-          // Auto scroll to the bottom after a new message is added
-          document.getElementById("messages").scrollTop =
-            document.getElementById("messages").scrollHeight;
-        });
-      });
+      //     // Auto scroll to the bottom after a new message is added
+      //     document.getElementById("messages").scrollTop =
+      //       document.getElementById("messages").scrollHeight;
+      //   });
+      // });
 
       // Send message
       document.getElementById("sendMessage").addEventListener("click", () => {

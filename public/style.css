@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+.current-link {
+  color: #7fcd25;
+  font-weight: 600;
+}
+
 #profile-btn {
   opacity: 0;
 }
@@ -107,7 +112,8 @@ h5 {
   grid-template-columns: repeat(3, auto);
 }
 
-#userPostsContainer {
+#userPostsContainer,
+#otherUserPostsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Makes the grid responsive */
   gap: 20px; /* Space between grid items */
@@ -381,15 +387,11 @@ body {
 #product-details #product-photo {
   background-color: #e4e4e4;
   padding: 2rem;
-  height: 445px;
+  height: 385px;
 }
 #product-details #product-photo #main {
   width: 418px;
   height: 310px;
-}
-#product-details #product-photo img {
-  width: 108px;
-  height: 84px;
 }
 #product-details #details {
   display: flex;

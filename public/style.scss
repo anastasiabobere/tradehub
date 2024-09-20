@@ -9,6 +9,10 @@ $green-color: #7fcd25;
   padding: 0;
   box-sizing: border-box;
 }
+.current-link {
+  color: $green-color;
+  font-weight: 600;
+}
 #profile-btn {
   opacity: 0;
 }
@@ -102,7 +106,8 @@ h5 {
   display: grid;
   grid-template-columns: repeat(3, auto);
 }
-#userPostsContainer {
+#userPostsContainer,
+#otherUserPostsContainer {
   display: grid;
   grid-template-columns: repeat(
     auto-fill,
@@ -416,15 +421,11 @@ body {
   #product-photo {
     background-color: #e4e4e4;
     padding: 2rem;
-    height: 445px;
+    height: 385px;
 
     #main {
       width: 418px;
       height: 310px;
-    }
-    img {
-      width: 108px;
-      height: 84px;
     }
   }
   #details {
