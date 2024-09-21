@@ -45,8 +45,9 @@ function loadPosts() {
           // Check if the current user is the author of the post
           if (currentUserId && post.userId === currentUserId) {
             postElement.innerHTML += `
+          <div class="buttons-post">
               <button class="btn" onclick="editPost('${postId}')">Edit</button>
-              <button class="btn" onclick="deletePost('${postId}')">Delete</button>
+              <button class="btn" onclick="deletePost('${postId}')">Delete</button></div>
             `;
           }
 
@@ -84,7 +85,7 @@ function deletePost(postId) {
       });
   }
 }
-
+//посты профайл пейлд
 function loadUserPosts() {
   const userId = firebase.auth().currentUser.uid;
   const postsContainer = document.getElementById("userPostsContainer");
@@ -113,12 +114,14 @@ function loadUserPosts() {
         post.title
       }</a>
         <p>${post.location}<br />${post.description}</p>
+        <div class="buttons-post">
         <button class="btn" onclick="editPost('${
           childSnapshot.key
         }')">Edit</button>
         <button class="btn" onclick="deletePost('${
           childSnapshot.key
         }')">Delete</button>
+        </div>
       `;
       postsContainer.appendChild(postElement);
     });

@@ -12,10 +12,9 @@ $green-color: #7fcd25;
 .current-link {
   color: $green-color;
   font-weight: 600;
+  text-decoration: underline;
 }
-#profile-btn {
-  opacity: 0;
-}
+
 img {
   width: 100px;
   height: 100px;
@@ -413,6 +412,12 @@ body {
     color: #6c757d;
   }
 }
+.buttons-post {
+  .btn {
+    width: 4rem;
+    height: 1rem;
+  }
+}
 //product details
 #product-details {
   display: flex;
@@ -441,6 +446,9 @@ body {
 #profile {
   .cards {
     margin-bottom: 2rem;
+  }
+  .h1 {
+    margin: 1rem;
   }
   .profile {
     display: flex;
@@ -569,9 +577,11 @@ body {
     padding: 1.6rem;
     input,
     textarea,
-    select {
+    select,
+    #location {
       margin: 1.6rem;
       width: 20rem;
+      font-family: "Alegreya Sans", sans-serif;
     }
   }
   h1 {

@@ -8,10 +8,7 @@
 .current-link {
   color: #7fcd25;
   font-weight: 600;
-}
-
-#profile-btn {
-  opacity: 0;
+  text-decoration: underline;
 }
 
 img {
@@ -380,6 +377,11 @@ body {
   color: #6c757d;
 }
 
+.buttons-post .btn {
+  width: 4rem;
+  height: 1rem;
+}
+
 #product-details {
   display: flex;
   height: calc(100vh - 100px);
@@ -404,6 +406,9 @@ body {
 
 #profile .cards {
   margin-bottom: 2rem;
+}
+#profile .h1 {
+  margin: 1rem;
 }
 #profile .profile {
   display: flex;
@@ -533,9 +538,11 @@ body {
 }
 .createPost form input,
 .createPost form textarea,
-.createPost form select {
+.createPost form select,
+.createPost form #location {
   margin: 1.6rem;
   width: 20rem;
+  font-family: "Alegreya Sans", sans-serif;
 }
 .createPost h1 {
   margin: 2rem;
