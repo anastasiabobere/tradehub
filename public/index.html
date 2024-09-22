@@ -34,13 +34,15 @@
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
-        <button id="login-btn" class="btn">
-          <a href="login.html">Login</a>
-        </button>
-
-        <button id="account-btn" class="btn">
-          <a href="profile.html">Your Account</a>
-        </button>
+        <div id="google-elements">
+          <button id="login-btn" class="btn">
+            <a href="login.html">Login</a>
+          </button>
+          <button id="account-btn" class="btn">
+            <a href="profile.html">Your Account</a>
+          </button>
+          <div id="google_translate_element"></div>
+        </div>
       </nav>
       <svg
         class="menu"
@@ -110,6 +112,20 @@
         Ventspils, Latvia
       </p>
     </footer>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "en", // Specify your website's default language here
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element",
+        );
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="index-page.js"></script>
     <script src="login.js"></script>
     <script src="publicScript.js"></script>

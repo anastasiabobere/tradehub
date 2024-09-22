@@ -97,6 +97,21 @@ h5 {
   padding-bottom: 0.4rem;
 }
 
+#google_translate_element .goog-te-gadget-simple {
+  width: 330px;
+  height: 60px;
+  padding-bottom: 50px;
+}
+
+#google-elements {
+  display: flex;
+  gap: 1rem;
+}
+
+.buttons button {
+  margin-bottom: 1rem;
+}
+
 #postsContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Makes the grid responsive */

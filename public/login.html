@@ -24,7 +24,8 @@
         <button onclick="signInWithEmail()">Sign in with Email</button>
         <button onclick="signInWithGoogle()">Sign in with Google</button>
       </div>
-      <a href="index.html">Forgot Password?</a>
+      <a style="cursor: pointer" onclick="resetPassword()">Forgot Password?</a>
+      <div id="resetPassword"></div>
       <div id="register-form" style="display: block">
         <h2>Register</h2>
         <input type="text" id="reg-email" placeholder="Email" />
@@ -36,31 +37,7 @@
     </section>
 
     <script src="login.js"></script>
-    <script>
-      // Initialize Firebase
-      const firebaseConfig = {
-        apiKey: "AIzaSyCINWxOmLAwuzVIUrjuyceFmYTFO33buDM",
 
-        authDomain: "tradehub-986b0.firebaseapp.com",
-
-        databaseURL:
-          "https://tradehub-986b0-default-rtdb.europe-west1.firebasedatabase.app",
-
-        projectId: "tradehub-986b0",
-
-        storageBucket: "tradehub-986b0.appspot.com",
-
-        messagingSenderId: "209270213730",
-
-        appId: "1:209270213730:web:b0dadb5a62ece7a8ce953b",
-
-        measurementId: "G-97G3WHRM1P",
-      };
-
-      const app = firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
-      const database = firebase.database();
-    </script>
     <script src="firebaseUtils.js"></script>
   </body>
 </html>

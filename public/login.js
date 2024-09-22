@@ -85,6 +85,35 @@ function signInWithGoogle() {
       alert("Google login failed.");
     });
 }
+function resetPassword() {
+  console.log("clicked");
+  document.getElementById("resetPassword").innerHTML = `
+  <form id="resetPasswordForm">
+  <input type="email" id="resetEmail" placeholder="Enter your email" required />
+  <button type="submit">Reset Password</button>
+</form>
+<p id="resetMessage"></p>`;
+  document
+    .getElementById("resetPasswordForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const email = document.getElementById("resetEmail").value;
+
+      firebase
+        .auth()
+        .sendPasswordResetEmail(email)
+        .then(() => {
+          document.getElementById("resetMessage").textContent =
+            "Password reset email sent!";
+        })
+        .catch((error) => {
+          document.getElementById(
+            "resetMessage",
+          ).textContent = `Error: ${error.message}`;
+        });
+    });
+}
 
 // зарегаться
 function register() {
