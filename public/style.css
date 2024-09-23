@@ -413,6 +413,7 @@ body {
 #product-details #details {
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
   margin-left: 1.5rem;
 }
 #product-details #details .detail-item {
