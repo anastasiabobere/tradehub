@@ -14,7 +14,6 @@ function loadUserData() {
   });
 }
 
-// Call loadUserData when the user is signed in
 auth.onAuthStateChanged((user) => {
   if (user) {
     loadUserData();
@@ -74,7 +73,7 @@ function updateUsername() {
     })
     .then(() => {
       alert("Username updated!");
-      loadUserData(); // Reload user data to display the updated username
+      loadUserData();
     })
     .catch((error) => {
       console.error("Error updating username:", error);
@@ -86,11 +85,9 @@ function deleteAccount() {
   const userRef = database.ref("users/" + userId);
   const postsRef = database.ref("posts");
 
-  // Delete user data from the Realtime Database
   userRef
     .remove()
     .then(() => {
-      // Delete posts associated with the user
       postsRef
         .orderByChild("userId")
         .equalTo(userId)
@@ -100,12 +97,11 @@ function deleteAccount() {
           });
         });
 
-      // Delete the user account
       auth.currentUser
         .delete()
         .then(() => {
           alert("Account deleted!");
-          window.location.href = "index.html"; // Redirect to login page
+          window.location.href = "index.html";
         })
         .catch((error) => {
           console.error("Error deleting account:", error);
@@ -116,5 +112,5 @@ function deleteAccount() {
     });
 }
 function goBackToProfile() {
-  window.location.href = "profile.html"; // Redirect to the profile page
+  window.location.href = "profile.html";
 }

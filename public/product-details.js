@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Display the post details
       document.getElementById("name").textContent = postData.title;
       document.getElementById("location").textContent = postData.location;
       document.getElementById("condition").textContent = postData.condition;
@@ -24,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("contact-info").textContent = postData.contact;
       document.getElementById("main").src = postData.imageUrl || "default.jpg";
 
-      // Update the "View User Account" button with the correct userId
       const userId = postData.userId;
       if (userId) {
         const viewUserAccountButton = document.getElementById(

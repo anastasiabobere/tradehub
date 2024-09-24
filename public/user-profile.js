@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userId = urlParams.get("userId");
     const postsContainer = document.getElementById("otherUserPostsContainer");
 
-    postsContainer.innerHTML = ""; // Clear previous posts
+    postsContainer.innerHTML = "";
 
     const postsRef = firebase
       .database()
@@ -71,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
       snapshot.forEach((childSnapshot) => {
         const post = childSnapshot.val();
 
-        // Create post element and append it to the container
         const postElement = document.createElement("div");
 
         postElement.classList.add("product-card");

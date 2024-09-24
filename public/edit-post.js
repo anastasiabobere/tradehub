@@ -14,7 +14,6 @@ function loadPostData() {
         document.getElementById("location").value = post.location;
         document.getElementById("condition").value = post.condition;
 
-        // If the post has an image, display it
         if (post.imageUrl) {
           const imgElement = document.createElement("img");
           imgElement.src = post.imageUrl;
@@ -31,7 +30,6 @@ function loadPostData() {
     });
 }
 
-// Call the function to load post data on page load
 loadPostData();
 document
   .getElementById("editPostForm")
@@ -56,11 +54,11 @@ document
           location: location,
           condition: condition,
           contact: contact,
-          imageUrl: imageUrl || null, // Update imageUrl if new image was uploaded
+          imageUrl: imageUrl || null,
         })
         .then(() => {
           alert("Post updated successfully!");
-          window.location.href = "products.html"; // Redirect to posts page
+          window.location.href = "products.html";
         })
         .catch((error) => {
           console.error("Error updating post:", error);
@@ -95,7 +93,6 @@ function deletePost(postId) {
       .then((snapshot) => {
         const post = snapshot.val();
         if (post && post.imageUrl) {
-          // Delete the image from storage
           const storageRef = firebase.storage().refFromURL(post.imageUrl);
           storageRef
             .delete()
@@ -108,10 +105,9 @@ function deletePost(postId) {
         }
       })
       .then(() => {
-        // Delete the post from the database
         postRef.remove().then(() => {
           alert("Post deleted successfully.");
-          window.location.href = "posts.html"; // Redirect after deletion
+          window.location.href = "products.html";
         });
       })
       .catch((error) => {

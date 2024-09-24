@@ -1,12 +1,10 @@
 function loadPosts() {
-  // Get f values
   const conditionFilter = document.getElementById("filterCondition").value;
   const locationFilter = document
     .getElementById("filterLocation")
     .value.toLowerCase();
   const postsContainer = document.getElementById("postsContainer");
 
-  // Clear previous posts
   postsContainer.innerHTML = "";
 
   // Reference to the posts in the dsb
@@ -29,7 +27,6 @@ function loadPosts() {
           locationFilter === "" ||
           post.location.toLowerCase().includes(locationFilter);
 
-        // Show post if it matches the filters
         if (matchesCondition && matchesLocation) {
           const postElement = document.createElement("div");
           postElement.classList.add("product-card");
@@ -42,7 +39,6 @@ function loadPosts() {
             <p>${post.location}<br />${post.description}</p>
           `;
 
-          // Check if the current user is the author of the post
           if (currentUserId && post.userId === currentUserId) {
             postElement.innerHTML += `
           <div class="buttons-post">
@@ -60,13 +56,11 @@ function loadPosts() {
     });
 }
 
-// Call loadPosts when the page loads
 document.addEventListener("DOMContentLoaded", () => {
   loadPosts();
 });
 
 function editPost(postId) {
-  // Redirect to a post editing page or handle inline editing
   window.location.href = `edit-post.html?postId=${postId}`;
 }
 
@@ -78,19 +72,19 @@ function deletePost(postId) {
       .remove()
       .then(() => {
         alert("Post deleted successfully.");
-        loadPosts(); // Reload posts after deletion
+        loadPosts();
       })
       .catch((error) => {
         console.error("Error deleting post:", error);
       });
   }
 }
-//посты профайл пейлд
+//current user posts
 function loadUserPosts() {
   const userId = firebase.auth().currentUser.uid;
   const postsContainer = document.getElementById("userPostsContainer");
 
-  postsContainer.innerHTML = ""; // Clear previous posts
+  postsContainer.innerHTML = "";
 
   const postsRef = firebase
     .database()
@@ -102,7 +96,6 @@ function loadUserPosts() {
     snapshot.forEach((childSnapshot) => {
       const post = childSnapshot.val();
 
-      // Create post element and append it to the container
       const postElement = document.createElement("div");
 
       postElement.classList.add("product-card");
@@ -127,30 +120,6 @@ function loadUserPosts() {
     });
   });
 }
-
-// Function to handle post editing
-function editPost(postId) {
-  // Redirect to an editing page with post ID in query params
-  window.location.href = `edit-post.html?postId=${postId}`;
-}
-
-// Function to handle post deletion
-function deletePost(postId) {
-  if (confirm("Are you sure you want to delete this post?")) {
-    firebase
-      .database()
-      .ref("posts/" + postId)
-      .remove()
-      .then(() => {
-        alert("Post deleted successfully.");
-        loadUserPosts(); // Reload posts after deletion
-      })
-      .catch((error) => {
-        console.error("Error deleting post:", error);
-      });
-  }
-}
-
 // Load the user's posts when authenticated
 auth.onAuthStateChanged((user) => {
   if (user) {

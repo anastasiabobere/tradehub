@@ -12,10 +12,9 @@ document
     const file = fileInput.files[0];
     const userId = firebase.auth().currentUser.uid;
 
-    // Generate a unique key for the new post
+    //unique key for post
     const postRef = firebase.database().ref("posts").push();
 
-    // Upload image to Firebase Storage (if provided)
     if (file) {
       const storageRef = firebase.storage().ref();
       const fileRef = storageRef.child("postImages/" + postRef.key + ".jpg");
@@ -24,7 +23,6 @@ document
         .put(file)
         .then((snapshot) => {
           fileRef.getDownloadURL().then((url) => {
-            // Save post data including the image URL
             savePostData(
               postRef.key,
               title,
@@ -41,7 +39,6 @@ document
           console.error("Error uploading image:", error);
         });
     } else {
-      // Save post data without an image
       savePostData(
         postRef.key,
         title,

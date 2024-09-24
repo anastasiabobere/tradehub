@@ -1,4 +1,4 @@
-// menu function
+//script for front-end functions
 document.addEventListener("DOMContentLoaded", function () {
   const menuButton = document.querySelector(".menu");
   const header = document.getElementById("nav-con");
@@ -14,4 +14,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 releasePointerCapture(pointerId);
-//это скрипт для фронт

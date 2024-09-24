@@ -14,10 +14,8 @@ const auth = firebase.auth();
 const database = firebase.database();
 const storage = firebase.storage();
 
-//код чтобы зайти
 auth.onAuthStateChanged((user) => {
   if (user) {
-    // User is signed in, get their information
     console.log("User is signed in");
     const userId = user.uid;
 
@@ -36,8 +34,6 @@ auth.onAuthStateChanged((user) => {
       }
     });
   } else {
-    // User is signed out, redirect to login page
-    // window.location.href = "index.html";
     hideProfileButton();
     console.log("No user signed in");
   }
@@ -115,7 +111,6 @@ function resetPassword() {
     });
 }
 
-// зарегаться
 function register() {
   const email = document.getElementById("reg-email").value;
   const password = document.getElementById("reg-password").value;
@@ -166,7 +161,6 @@ function register() {
     registrationMessage.textContent = "Please enter all fields.";
   }
 }
-// Для кнопок и чтоьы все видно было
 function showProfileButton() {
   document.getElementById("account-btn").style.display = "block";
 }

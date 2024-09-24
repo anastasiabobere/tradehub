@@ -14,15 +14,13 @@ function loadUserData() {
   });
 }
 
-// Call loadUserData when the user is signed in
 auth.onAuthStateChanged((user) => {
   if (user) {
     loadUserData();
 
-    const userId = user.uid; // Get current logged-in user ID
+    const userId = user.uid;
     const chatsRef = firebase.database().ref("chats");
 
-    // Fetch chats where the current user is either sender or receiver
     chatsRef.once("value", (snapshot) => {
       const allChats = snapshot.val();
       if (!allChats) {
@@ -35,7 +33,6 @@ auth.onAuthStateChanged((user) => {
       Object.keys(allChats).forEach((chatId) => {
         const messages = allChats[chatId].messages;
 
-        // Find the last message in the chat to check participants
         const lastMessage = Object.values(messages).pop();
 
         if (
@@ -63,6 +60,6 @@ auth.onAuthStateChanged((user) => {
   } else {
     console.log("User is not logged in.");
     // Optionally, redirect to login page if the user is not authenticated
-    window.location.href = "login.html"; // Example: redirect to login page
+    // window.location.href = "login.html";
   }
 });
