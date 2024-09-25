@@ -662,6 +662,16 @@ footer {
 
 //media queries
 @media screen and (max-width: 900px) {
+  #google_translate_element {
+    .goog-te-gadget-simple {
+      width: 130px;
+      height: 30px;
+      padding-bottom: 50px;
+    }
+  }
+  #google-elements {
+    margin-bottom: 2rem;
+  }
   #chat {
     textarea,
     .message {
