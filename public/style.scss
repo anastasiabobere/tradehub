@@ -14,7 +14,21 @@ $green-color: #7fcd25;
   font-weight: 600;
   text-decoration: underline;
 }
+textarea:focus,
+input:focus {
+  outline: none !important;
+  border: 1px solid #7fcd25;
+  box-shadow: 0 0 10px #7fcd25;
+}
 
+select {
+  color: #282828;
+  font-weight: 400;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid $green-color;
+}
 img {
   width: 100px;
   height: 100px;
@@ -275,8 +289,6 @@ body {
     }
   }
 }
-//End of about
-//contact
 #contact {
   .container {
     display: flex;
@@ -326,8 +338,6 @@ body {
     }
   }
 }
-//end of contact
-//login page
 #login {
   .container {
     display: flex;
@@ -375,7 +385,6 @@ body {
     }
   }
 }
-
 #chat {
   display: flex;
   flex-direction: column;
@@ -434,7 +443,6 @@ body {
     height: 1rem;
   }
 }
-//product details
 #product-details {
   display: flex;
   height: calc(100vh - 100px);
@@ -549,7 +557,39 @@ body {
     font-weight: bolder;
   }
 }
+#rate {
+  padding: 3rem;
+  label,
+  select,
+  textarea,
+  .btn {
+    margin: 1.5rem;
+  }
+  height: 100vh;
+  text-align: center;
+  animation: introLoad 2s ease;
+  border-radius: 10px;
+  text-align: center;
+  a {
+    color: #282828;
+  }
+  input,
+  textarea {
+    color: #3b3b3b;
+    font-size: 16px;
+    font-weight: 300;
+    border: 1px solid #acacac;
+
+    font-family: Alegreya Sans;
+    border-radius: 5px;
+  }
+  button:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+  }
+}
 #login-page {
+  height: 100vh;
   text-align: center;
   animation: introLoad 2s ease;
   border-radius: 10px;

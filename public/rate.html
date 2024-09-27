@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,17 +10,17 @@
       src="https://kit.fontawesome.com/1995a9df69.js"
       crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
-
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <title>TradeHub | Your Profile</title>
+
+    <title>TradeHub | Rate Us</title>
   </head>
   <body>
     <header id="header">
       <nav class="container" id="nav-con">
-        <a href="index.html" id="logo">TradeHub</a>
+        <a href="index.html" id="logo" class="current-link">TradeHub</a>
         <svg
           class="close"
           xmlns="http://www.w3.org/2000/svg"
@@ -33,19 +33,18 @@
           <li><a href="products.html">Products</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="rate.html">Rate Us</a></li>
+          <li><a href="rate.html" class="current-link">Rate Us</a></li>
         </ul>
         <div id="google-elements">
           <div id="google_translate_element"></div>
         </div>
-        <div class="buttons">
-          <button class="btn">
-            <a href="settings.html">Settings</a>
-          </button>
-          <button class="btn" id="sign-out-btn " id="login" onclick="signOut()">
-            Sign Out
-          </button>
-        </div>
+
+        <button id="login-btn" class="btn">
+          <a href="login.html">Login</a>
+        </button>
+        <button id="account-btn" class="btn">
+          <a href="profile.html">Your Account</a>
+        </button>
       </nav>
       <svg
         class="menu"
@@ -56,33 +55,61 @@
           d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
       </svg>
     </header>
-    <section id="profile">
-      <div class="profile">
-        <h1>Welcome, <span id="username"></span></h1>
-        <img id="profile-picture" src="" alt="Profile Picture" />
+    <section id="rate">
+      <h1>Rate our website !</h1>
+      <form id="rateUsForm">
+        <label for="interfaceRating">Rate our website design:</label>
+        <select id="interfaceRating" name="interfaceRating" required>
+          <option value="" disabled selected>Select a rating</option>
+          <option value="1">1 - Very Bad</option>
+          <option value="2">2 - Bad</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option></select
+        ><br /><br />
 
-        <p>Email: <span id="email"></span></p>
-        <div id="messages"></div>
-        <button class="btn">
-          <a href="create-post.html">Add new product</a>
+        <label for="functionalityRating">Rate our functionality:</label>
+        <select id="functionalityRating" name="functionalityRating" required>
+          <option value="" disabled selected>Select a rating</option>
+          <option value="1">1 - Very Bad</option>
+          <option value="2">2 - Bad</option>
+          <option value="3">3 - Good</option>
+          <option value="4">4 - Very Good</option>
+          <option value="5">5 - Excellent</option></select
+        ><br /><br />
+
+        <label for="overallFeedback">How did you like it overall?</label><br />
+        <textarea
+          id="overallFeedback"
+          name="overallFeedback"
+          rows="4"
+          cols="50"
+          required></textarea
+        ><br /><br />
+
+        <label for="suggestions">What changes would you suggest?</label><br />
+        <textarea
+          id="suggestions"
+          name="suggestions"
+          rows="4"
+          cols="50"></textarea
+        ><br /><br />
+
+        <button type="submit" class="btn">Submit</button>
+        <button type="button" class="btn" id="downloadDataButton">
+          Your Data
         </button>
-      </div>
-      <div class="chats">
-        <h1>My Chats</h1>
-        <div id="chatsList"></div>
-      </div>
-      <h1 class="h1">Your products</h1>
-      <div id="userPostsContainer"></div>
+      </form>
     </section>
     <footer>
       <a id="logo" href="index.html">TradeHub</a>
-      <p>
+      <p class="info-footer">
         If you have any questions contact us
         <a href="contact.html"><span>here</span></a
         ><br />
         Tradehub &copy; 2024
       </p>
-      <p>
+      <p class="footer-list">
         tradehub372@gmail.com <br />
         +37122083534 <br />
         Ventspils, Latvia
@@ -102,11 +129,10 @@
     <script
       type="text/javascript"
       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="firebaseUtils.js"></script>
+    <script src="rate.js"></script>
     <script src="login.js"></script>
-    <script src="chat.js"></script>
-    <script src="display-posts.js"></script>
-    <script src="profile.js"></script>
     <script src="publicScript.js"></script>
+    <script src="profile.js"></script>
+    <script src="firebaseUtils.js"></script>
   </body>
 </html>

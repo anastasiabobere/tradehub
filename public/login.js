@@ -242,6 +242,31 @@ document
         console.error("Error submitting contact form:", error);
       });
   });
+document
+  .getElementById("downloadDataButton")
+  .addEventListener("click", function () {
+    // Get form values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // Format the data as plain text
+    const userData = `
+      Name: ${name}
+      Email: ${email}
+      Message: ${message}
+    `;
+
+    // Create a downloadable text file using a data URL
+    const dataStr =
+      "data:text/plain;charset=utf-8," + encodeURIComponent(userData);
+
+    // Create a download link and trigger the download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = dataStr;
+    downloadLink.download = "contact_form_data.txt";
+    downloadLink.click();
+  });
 
 // Initial setup
 showLoginForm();
