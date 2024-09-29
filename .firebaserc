@@ -1,5 +1,12 @@
 {
   "projects": {
     "default": "tradehub-986b0"
-  }
+  },
+  "targets": {},
+  "etags": {
+    "tradehub-986b0": {
+      "extensionInstances": {}
+    }
+  },
+  "dataconnectEmulatorConfig": {}
 }

@@ -548,6 +548,7 @@ body {
   font-size: 16px;
   font-weight: 300;
   border: 1px solid #acacac;
+  width: 60%;
   font-family: Alegreya Sans;
   border-radius: 5px;
 }
@@ -642,6 +643,9 @@ body {
 .more-info p {
   width: 20rem;
 }
+.more-info a {
+  color: #fff !important;
+}
 
 footer {
   background-color: #282828;
@@ -666,6 +670,29 @@ footer span {
 }
 
 @media screen and (max-width: 900px) {
+  #setting button {
+    margin-top: 2rem;
+  }
+  #chat {
+    margin-left: 0;
+  }
+  #product-photo {
+    background-color: #e4e4e4;
+    padding: 2rem;
+    height: 260px !important;
+  }
+  #product-photo #main {
+    width: 218px !important;
+    height: 200px !important;
+  }
+  #profile-info {
+    flex-direction: column !important;
+  }
+  #profile-info h1,
+  #profile-info p,
+  #profile-info .btn {
+    margin-top: 0;
+  }
   #google_translate_element .goog-te-gadget-simple {
     width: 130px;
     height: 30px;
@@ -797,6 +824,13 @@ footer span {
   header .container ul li:hover {
     text-decoration: underline;
     color: #7fcd25;
+  }
+  header .buttons button a {
+    color: white !important;
+  }
+  header #account-btn a,
+  header #login-btn a {
+    color: white !important;
   }
   header .close {
     display: block;

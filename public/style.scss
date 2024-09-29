@@ -144,14 +144,12 @@ h5 {
   ); /* Makes the grid responsive */
   gap: 20px; /* Space between grid items */
 }
-// Home page
+
 body {
   height: 100vh;
   font-family: "Alegreya Sans", sans-serif;
   overflow-x: hidden;
 }
-
-//section home
 #home {
   .container {
     #banner {
@@ -184,8 +182,6 @@ body {
     }
   }
 }
-
-//home-about
 
 .about-div {
   display: grid;
@@ -237,10 +233,6 @@ body {
     color: $green-color;
   }
 }
-
-//End of home page
-
-//About page
 #about {
   h5 {
     margin-bottom: 1rem;
@@ -579,7 +571,7 @@ body {
     font-size: 16px;
     font-weight: 300;
     border: 1px solid #acacac;
-
+    width: 60%;
     font-family: Alegreya Sans;
     border-radius: 5px;
   }
@@ -675,6 +667,9 @@ body {
   p {
     width: 20rem;
   }
+  a {
+    color: #fff !important;
+  }
 }
 //footer
 footer {
@@ -702,6 +697,35 @@ footer {
 
 //media queries
 @media screen and (max-width: 900px) {
+  #setting {
+    button {
+      margin-top: 2rem;
+    }
+  }
+  // .message {
+  //   width: 400px !important;
+  // }
+  #chat {
+    margin-left: 0;
+  }
+  #product-photo {
+    background-color: #e4e4e4;
+    padding: 2rem;
+    height: 260px !important;
+
+    #main {
+      width: 218px !important;
+      height: 200px !important;
+    }
+  }
+  #profile-info {
+    flex-direction: column !important;
+    h1,
+    p,
+    .btn {
+      margin-top: 0;
+    }
+  }
   #google_translate_element {
     .goog-te-gadget-simple {
       width: 130px;
@@ -848,7 +872,19 @@ footer {
         }
       }
     }
-
+    .buttons {
+      button {
+        a {
+          color: white !important;
+        }
+      }
+    }
+    #account-btn,
+    #login-btn {
+      a {
+        color: white !important;
+      }
+    }
     .close {
       display: block;
       position: absolute;

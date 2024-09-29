@@ -235,7 +235,7 @@ document
         timestamp: firebase.database.ServerValue.TIMESTAMP,
       })
       .then(() => {
-        alert("Thank you for contacting us!");
+        alert("Submitted!");
         document.getElementById("contactForm").reset(); // Clear the form
       })
       .catch((error) => {
