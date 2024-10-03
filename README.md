@@ -7,7 +7,7 @@ The idea behind it to help reduce fast fashion tendences in our society and prom
 
 ## Progress
 
-The website is still in the making, should be ready before the New Years
+The website is finished except for review and feedback analysis. I would appreciate if everyone could give their thoughts on Rate Us page.
 
 ## What is different from regular thrift shops?
 
