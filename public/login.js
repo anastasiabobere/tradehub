@@ -65,20 +65,23 @@ function signInWithEmail() {
 }
 
 function signInWithGoogle() {
+  const auth = firebase.auth(); // Ensure auth is correctly initialized
   const provider = new firebase.auth.GoogleAuthProvider();
+
   auth
     .signInWithPopup(provider)
     .then((result) => {
-      // User signed in successfully
-      const user = result.user;
+      // Successfully signed in
+      const user = result.user; // Fixed reference to user object
+      console.log("Signed in user:", user.displayName);
 
-      showSignOutButton();
-      showProfileButton();
+      // Redirect to profile page
+      window.location.href = "profile.html";
     })
     .catch((error) => {
       // Handle errors
-      console.error(error);
-      alert("Google login failed.");
+      console.error("Error during Google login:", error);
+      alert("Google login failed: " + error.message);
     });
 }
 function resetPassword() {
