@@ -56,50 +56,53 @@
       </svg>
     </header>
     <section id="rate">
-      <h1>Rate our website !</h1>
-      <form id="rateUsForm">
-        <label for="interfaceRating">Rate our website design:</label>
-        <select id="interfaceRating" name="interfaceRating" required>
-          <option value="" disabled selected>Select a rating</option>
-          <option value="1">1 - Very Bad</option>
-          <option value="2">2 - Bad</option>
-          <option value="3">3 - Good</option>
-          <option value="4">4 - Very Good</option>
-          <option value="5">5 - Excellent</option></select
-        ><br /><br />
+      <div class="container">
+        <h1>Rate our website !</h1>
+        <form id="rateUsForm">
+          <label for="interfaceRating">Rate our website design:</label>
+          <select id="interfaceRating" name="interfaceRating" required>
+            <option value="" disabled selected>Select a rating</option>
+            <option value="1">1 - Very Bad</option>
+            <option value="2">2 - Bad</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option></select
+          ><br /><br />
 
-        <label for="functionalityRating">Rate our functionality:</label>
-        <select id="functionalityRating" name="functionalityRating" required>
-          <option value="" disabled selected>Select a rating</option>
-          <option value="1">1 - Very Bad</option>
-          <option value="2">2 - Bad</option>
-          <option value="3">3 - Good</option>
-          <option value="4">4 - Very Good</option>
-          <option value="5">5 - Excellent</option></select
-        ><br /><br />
+          <label for="functionalityRating">Rate our functionality:</label>
+          <select id="functionalityRating" name="functionalityRating" required>
+            <option value="" disabled selected>Select a rating</option>
+            <option value="1">1 - Very Bad</option>
+            <option value="2">2 - Bad</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option></select
+          ><br /><br />
 
-        <label for="overallFeedback">How did you like it overall?</label><br />
-        <textarea
-          id="overallFeedback"
-          name="overallFeedback"
-          rows="4"
-          cols="50"
-          required></textarea
-        ><br /><br />
+          <label for="overallFeedback">How did you like it overall?</label
+          ><br />
+          <textarea
+            id="overallFeedback"
+            name="overallFeedback"
+            rows="4"
+            cols="50"
+            required></textarea
+          ><br /><br />
 
-        <label for="suggestions">What changes would you suggest?</label><br />
-        <textarea
-          id="suggestions"
-          name="suggestions"
-          rows="4"
-          cols="50"></textarea
-        ><br /><br />
+          <label for="suggestions">What changes would you suggest?</label><br />
+          <textarea
+            id="suggestions"
+            name="suggestions"
+            rows="4"
+            cols="50"></textarea
+          ><br /><br />
 
-        <button type="submit" class="btn">Submit</button>
-        <button type="button" class="btn" id="downloadDataButton">
-          Your Data
-        </button>
-      </form>
+          <button type="submit" class="btn">Submit</button>
+          <button type="button" class="btn" id="downloadDataButton">
+            Your Data
+          </button>
+        </form>
+      </div>
     </section>
     <footer>
       <a id="logo" href="index.html">TradeHub</a>
@@ -121,6 +124,7 @@
           {
             pageLanguage: "en",
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            includedLanguages: "ru,de,lv,lt,et",
           },
           "google_translate_element",
         );
