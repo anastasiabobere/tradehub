@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
-
+node_modules
 # Firebase cache
 .firebase/
 
@@ -45,8 +45,11 @@ bower_components
 build/Release
 
 # Dependency directories
+tradehub/node_modules
+node_modules/@firebase
 node_modules/
-
+node_modules/*
+.bin
 # Optional npm cache directory
 .npm
 
