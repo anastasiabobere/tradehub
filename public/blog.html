@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog System</title>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <h1>Blog</h1>
+    <div id="posts"></div>
+
+    <h2>Create Post</h2>
+    <input type="text" id="postTitle" placeholder="Title" />
+    <textarea id="postContent" placeholder="Write your post..."></textarea>
+    <button id="submitPost">Submit</button>
+
+    <script src="js/firebaseUtils.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/publicScript.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/submit-blog.js"></script>
+    <script src="js/display-post-blog.js"></script>
+  </body>
+</html>
