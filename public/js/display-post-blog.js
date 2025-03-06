@@ -2,16 +2,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   const blogContainer = document.getElementById("posts");
 
   try {
-    const response = await fetch(
+    // Fetch posts
+    const postsResponse = await fetch(
       "http://localhost:5001/tradehub-986b0/us-central1/api/getPosts",
     );
-    const posts = await response.json();
+    const posts = await postsResponse.json();
 
     if (posts.length === 0) {
       blogContainer.innerHTML = "<p>No blog posts yet.</p>";
       return;
     }
 
+    // Display posts
     blogContainer.innerHTML = posts
       .map(
         (post) => `
@@ -32,6 +34,27 @@ document.addEventListener("DOMContentLoaded", async () => {
       `,
       )
       .join("");
+
+    // Fetch and display comments for each post
+    posts.forEach(async (post) => {
+      const commentsResponse = await fetch(
+        `http://localhost:5001/tradehub-986b0/us-central1/api/getComments/${post.id}`,
+      );
+      const comments = await commentsResponse.json();
+      const commentsContainer = document.getElementById(`comments-${post.id}`);
+      commentsContainer.innerHTML = comments
+        .map(
+          (comment) => `
+            <div class="comment">
+                <p>${comment.comment}</p>
+                <small>Commented by ${comment.userId} on ${new Date(
+            comment.timestamp,
+          ).toLocaleString()}</small>
+            </div>
+        `,
+        )
+        .join("");
+    });
   } catch (error) {
     console.error("Error loading blog posts:", error);
     blogContainer.innerHTML = "<p>Error loading posts.</p>";

@@ -7,7 +7,6 @@ function loadPosts() {
 
   postsContainer.innerHTML = "";
 
-  // Reference to the posts in the dsb
   const postsRef = firebase.database().ref("posts");
 
   // Load posts
