@@ -1,9 +1,8 @@
-document.getElementById("post-form").addEventListener("submit", async (e) => {
-  e.preventDefault(); // Prevent page reload
+import { checkAuth } from "./firebaseUtils.js";
 
-  const title = document.getElementById("post-title").value.trim();
-  const content = document.getElementById("post-content").value.trim();
-  const userId = "testUser123"; // Replace with actual user authentication ID
+document.getElementById("submitPost").addEventListener("click", async () => {
+  const title = document.getElementById("postTitle").value.trim();
+  const content = document.getElementById("postContent").value.trim();
 
   if (!title || !content) {
     alert("Title and content cannot be empty!");
@@ -11,21 +10,23 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
   }
 
   try {
+    const user = await checkAuth(); // Ensure the user is logged in
     const response = await fetch(
       "http://localhost:5001/tradehub-986b0/us-central1/api/addPost",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, title, content }),
+        body: JSON.stringify({ userId: user.uid, title, content }),
       },
     );
 
-    const result = await response.json();
     if (response.ok) {
       alert("Post added successfully!");
-      document.getElementById("post-form").reset(); // Clear form
+      document.getElementById("postTitle").value = "";
+      document.getElementById("postContent").value = "";
+      window.location.reload(); // Refresh the page to show the new post
     } else {
-      alert("Error: " + result.error);
+      alert("Error adding post.");
     }
   } catch (error) {
     console.error("Error submitting post:", error);

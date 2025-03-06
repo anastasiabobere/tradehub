@@ -14,3 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 releasePointerCapture(pointerId);
+import { auth } from "./firebaseUtils.js";
+
+auth.onAuthStateChanged((user) => {
+  const createPostSection = document.getElementById("createPost");
+  if (user) {
+    createPostSection.style.display = "block";
+  } else {
+    createPostSection.style.display = "none";
+  }
+});
