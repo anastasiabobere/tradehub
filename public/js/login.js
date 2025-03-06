@@ -41,7 +41,6 @@ function signInWithEmail() {
       .catch((error) => {
         // Handle errors
         console.error(error);
-        alert("Invalid email or password.");
       });
   } else {
     alert("Please enter both email and password.");
@@ -206,7 +205,7 @@ function loadContent() {
 document
   .getElementById("contactForm")
   .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from submitting the traditional way
+    event.preventDefault();
 
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
